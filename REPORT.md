@@ -59,6 +59,11 @@ panels are drawn graphics (scales of justice; atom). Composition script:
 
 - `main.ts` run twice with different `MAKEFUN_OUTPUT_DIR` values: both
   outputs byte-identical (sha256 `f88e0895…ac96df`), 226,389 bytes.
+- `main.ts` was rewritten from scratch in this session (no copied file):
+  it parses the JPEG frame header to confirm 1024x1024, checks the
+  1 MiB cap, and re-checks the written copy's dimensions and sha256.
+  It was then revised once more to add that post-copy dimension check,
+  and re-tested twice after the revision with identical results.
 - Image opens cleanly as JPEG, 1024 × 1024, under the 1 MiB cap.
 - `main.ts` refuses a truncated file (JPEG SOI/EOI or PNG signature check)
   before writing.
